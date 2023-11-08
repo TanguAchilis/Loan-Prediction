@@ -111,12 +111,27 @@ def login():
 @app.route('/', defaults={'path': 'index'})
 @app.route('/<path>')
 def index(path):
+    if request.method == 'POST':
+        # Access the form data
+        credit_history = request.form.get('creditHistory')
+        gender = request.form.get('gender')
+        marital_status = request.form.get('maritalStatus')
+        graduate = 'Graduate' if 'graduate' in request.form else 'Not Graduate'
+        loan_amount = float(request.form.get('loanAmount'))
+        income = float(request.form.get('income'))
+        employed = 'Yes' if 'employed' in request.form else 'No'
 
-    #if not current_user.is_authenticated:
-    #    return redirect(url_for('login'))
+        # Perform the loan eligibility prediction (replace this with your prediction logic)
+        # For example, you might use a machine learning model.
+        # prediction_result = predict_loan(credit_history, gender, marital_status, graduate, loan_amount, income, employed)
+
+        # Return the prediction results to the user
+        # In this example, we'll return a simple message.
+        prediction_result = "Congratulations! You are eligible for the loan."
+
+        return render_template('prediction_result.html', prediction_result=prediction_result)
 
     try:
-
         return render_template( 'index.html' )
     
     except TemplateNotFound:
@@ -129,3 +144,25 @@ def index(path):
 @app.route('/sitemap.xml')
 def sitemap():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'sitemap.xml')
+
+
+@app.route('/predict', methods=['POST'])
+def predict_loan_eligibility():
+    # Access the form data
+    credit_history = request.form.get('creditHistory')
+    gender = request.form.get('gender')
+    marital_status = request.form.get('maritalStatus')
+    graduate = 'Graduate' if 'graduate' in request.form else 'Not Graduate'
+    loan_amount = float(request.form.get('loanAmount'))
+    income = float(request.form.get('income'))
+    employed = 'Yes' if 'employed' in request.form else 'No'
+
+    # Perform the loan eligibility prediction (replace this with your prediction logic)
+    # For example, you might use a machine learning model.
+    # prediction_result = predict_loan(credit_history, gender, marital_status, graduate, loan_amount, income, employed)
+
+    # Return the prediction results to the user
+    # In this example, we'll return a simple message.
+    prediction_result = "Congratulations! You are eligible for the loan."
+
+    return render_template('prediction_result.html', prediction_result=prediction_result)
