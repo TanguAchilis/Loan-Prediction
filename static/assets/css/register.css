@@ -1,0 +1,44 @@
+/* Custom CSS for Flask Authentication Login Page */
+
+/* Body Styles */
+body {
+    background-color: #f0f0f0; /* Set your desired background color */
+    font-family: Arial, sans-serif; /* Choose your preferred font-family */
+}
+
+/* Main Container Styles */
+.container {
+    background-color: #fff; /* Container background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Styles */
+h1 {
+    color: #007bff; /* Heading color */
+}
+
+/* Form Styles */
+.form-floating {
+    margin-bottom: 20px;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #007bff; /* Button background color */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Button background color on hover */
+}
+
+/* Link Styles */
+.text-muted a {
+    color: #007bff; /* Link color */
+}
+
+/* Additional Custom Styles */
+/* Add any additional custom styles here */
+
